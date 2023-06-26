@@ -59,7 +59,7 @@
                           </a>
                       </>
                       }
-                      <Transcribe />
+                      <Transcribe url={file || audio}/>
                       <a>Options:</a>
                       <Buttons />
                   </div>}
