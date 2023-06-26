@@ -4,7 +4,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from "prop-types";
 
-export const UploadButton = ({tagText = "UPLOAD A FILE", hover }) => {
+export const UploadButton = ({ tagText = "UPLOAD A FILE", hover }) => {
     const fileInputRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -23,29 +23,40 @@ export const UploadButton = ({tagText = "UPLOAD A FILE", hover }) => {
             console.log(fileContent);
         };
         reader.readAsText(file);
+        // Llama a una función de exportación con el archivo seleccionado
+        exportFile(file);
+
+
+
+    };
+    const exportFile = (file) => {
+        // Realiza acciones adicionales con el archivo seleccionado en otra parte del código
+        console.log('Archivo exportado:', file);
+        // Puedes pasar el archivo a otro componente, guardar en el estado global, enviar a través de una solicitud AJAX, etc.
     };
 
     return (
-            <div>
-                <button onClick={handleClick} className="tag">
-                    <div className="tag-text">{tagText}</div>
-                </button>
+        <div>
+            <button onClick={handleClick} className="tag">
+                <div className="tag-text">{tagText}</div>
+            </button>
 
-                <input
-                    ref={fileInputRef}
-                    type="file"
-                    style={{ display: 'none' }}
-                    onChange={handleFileChange}
-                />
-                {selectedFile && (
-                    <div >
-                        <h4>Selected File:</h4>
-                        <p className={"fileDisplay"}>{selectedFile.name}</p>
-                        {/* <p>Tipo: {selectedFile.type}</p>
+            <input
+                ref={fileInputRef}
+                type="file"
+                accept=".mp3, .mp4, .svg, .wav, .flac, .aac, .m4a, .ogg, .aiff, .aif"
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+            />
+            {selectedFile && (
+                <div >
+                    <h4>Selected File:</h4>
+                    <p className={"fileDisplay"}>{selectedFile.name}</p>
+                    {/* <p>Tipo: {selectedFile.type}</p>
                         <p>Tamaño: {selectedFile.size} bytes</p> */}
-                    </div>
-                )}
-            </div>
+                </div>
+            )}
+        </div>
     );
 };
 
