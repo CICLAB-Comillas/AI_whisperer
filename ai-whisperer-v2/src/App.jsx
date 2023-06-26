@@ -32,30 +32,44 @@
                 <br /> M. Liz, A. Quintana
               </h5>
               <div className="card">
-                <UploadButton onFileUpload={handleFileUpdate}/>
-                  {file && <div>
-                      <a download href={file}>
-                          Succesfully uploaded file...
-                      </a>
+                  {!audio &&
+                    <UploadButton onFileUpload={handleFileUpdate}/>
+                  }
+                  {(!audio && !file) && <><a>or</a></> }
+                  {!file &&
+                    <AudioRecorder onAudioUpdate={handleAudioUpdate}/>
+                  }
+
+                  {/*the following code corresponds to the apparition of the transcribe button modified according to the
+                   button pressed previously*/}
+                  {(audio || file) && <div>
+                      {audio && <>
+                          <a>Recording succesful</a>
+                          <br/>
+                          <a download href={audio}>
+                              -- Download Recording --
+                          </a>
+                      </>
+                      }
+                      {file && <>
+                          <a>Upload succesful </a>
+                          <br/>
+                          <a download href={file}>
+                              -- Download File --
+                          </a>
+                      </>
+                      }
                       <Transcribe />
                       <a>Options:</a>
                       <Buttons />
                   </div>}
 
-                <a>or</a>
-                <AudioRecorder onAudioUpdate={handleAudioUpdate}/>
-                  {audio && <div>
-                      <a download href={audio}>
-                          Download Recording
-                      </a>
-                      <Transcribe />
-                      <a>Options:</a>
-                      <Buttons />
-                  </div>}
 
               </div>
               <p className="read-the-docs">
-                Please, only upload a .mp4 file with the audio you want to see transcribed to text.
+                Please, only upload one of the following types of files: <br/>
+                  .mp3  .mp4  .svg  .wav  .flac  .aac  .m4a  .ogg  .aiff  .aif  .weba <br/>
+                  ... with the audio you want to see transcribed to text.
               </p>
               <p className="read-the-docs">
                 To learn more click on the CICLAB logo or visit {'https://github.com/CICLAB-Comillas'}
