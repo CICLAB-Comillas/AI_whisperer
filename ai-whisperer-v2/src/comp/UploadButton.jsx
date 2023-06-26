@@ -138,7 +138,5 @@ export const UploadButton = ({ tagText = "UPLOAD A FILE", hover }) => {
 };
 
 UploadButton.propTypes = {
-    text: PropTypes.string,
     tagText: PropTypes.string,
-    hover: PropTypes.bool,
 };
