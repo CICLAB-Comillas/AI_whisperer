@@ -9,8 +9,12 @@
 
     function App() {
         const [audio, setAudio] = useState(null);
+        const [file, setFile] = useState(null);
         const handleAudioUpdate = (newAudio) => {
             setAudio(newAudio);
+        };
+        const handleFileUpdate = (newFile) => {
+          setFile(newFile);
         };
 
 
@@ -28,7 +32,16 @@
                 <br /> M. Liz, A. Quintana
               </h5>
               <div className="card">
-                <UploadButton />
+                <UploadButton onFileUpload={handleFileUpdate}/>
+                  {file && <div>
+                      <a download href={file}>
+                          Succesfully uploaded file...
+                      </a>
+                      <Transcribe />
+                      <a>Options:</a>
+                      <Buttons />
+                  </div>}
+
                 <a>or</a>
                 <AudioRecorder onAudioUpdate={handleAudioUpdate}/>
                   {audio && <div>
