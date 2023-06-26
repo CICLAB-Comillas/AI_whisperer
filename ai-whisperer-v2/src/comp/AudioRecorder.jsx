@@ -60,7 +60,6 @@ const AudioRecorder = () => {
 
     return (
         <div>
-            <h2>Audio Recorder</h2>
             <main>
                 <div className="audio-controls">
                     {!permission ? (
@@ -80,7 +79,8 @@ const AudioRecorder = () => {
                     ) : null}
                     {audio ? (
                         <div className="audio-container">
-                            <audio src={audio} controls></audio>
+                            <audio className={"audio-controls"} src={audio} controls></audio>
+                            <br />
                             <a download href={audio}>
                                 Download Recording
                             </a>
