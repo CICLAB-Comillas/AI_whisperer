@@ -11,6 +11,7 @@ const TranscribeAudio = () => {
         <div>
             <button onClick={handleClick}>Transcribe</button>
             <br />
+            <br />
             {showTextbox && <textarea rows="4" cols="50" />}
         </div>
     );
