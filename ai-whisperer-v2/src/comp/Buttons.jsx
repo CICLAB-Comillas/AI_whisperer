@@ -19,9 +19,9 @@ class Buttons extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.traducir}>Traducir</button>
-                <button onClick={this.resumir}>Resumir</button>
-                <button onClick={this.corregir}>Corregir</button>
+                <button onClick={this.traducir}>Translate</button>
+                <button onClick={this.resumir}>Summarize</button>
+                <button onClick={this.corregir}>Correct</button>
             </div>
         );
     }
