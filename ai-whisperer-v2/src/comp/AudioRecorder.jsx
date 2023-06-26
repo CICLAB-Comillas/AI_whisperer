@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import { useState, useRef } from "react";
-const AudioRecorder = () => {
+const AudioRecorder = ({ onAudioUpdate }) => {
     const mimeType = "audio/webm";
     const [permission, setPermission] = useState(false);
     const mediaRecorder = useRef(null);
@@ -52,6 +53,9 @@ const AudioRecorder = () => {
             //creates a playable URL from the blob file.
             const audioUrl = URL.createObjectURL(audioBlob);
             setAudio(audioUrl);
+            if (onAudioUpdate) {
+                onAudioUpdate(audioUrl); //this is a callback function, to notify the parent component of the audio url
+            }
             setAudioChunks([]);
         };
     };
@@ -80,10 +84,6 @@ const AudioRecorder = () => {
                     {audio ? (
                         <div className="audio-container">
                             <audio className={"audio-controls"} src={audio} controls></audio>
-                            <br />
-                            <a download href={audio}>
-                                Download Recording
-                            </a>
                         </div>
                     ) : null}
                 </div>
@@ -91,4 +91,9 @@ const AudioRecorder = () => {
         </div>
     );
 };
+
+AudioRecorder.propTypes = {
+    onAudioUpdate: PropTypes.func
+};
+
 export default AudioRecorder;
