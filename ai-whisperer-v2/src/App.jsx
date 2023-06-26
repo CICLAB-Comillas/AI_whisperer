@@ -35,7 +35,7 @@ function App() {
           <a download href={audio}>
             Download Recording
           </a>
-          <TranscribeAudio audioURL={audio} />
+          <TranscribeAudio className="Marta" audioURL={audio} />
           <a>Options:</a>
           <Buttons />
         </div>}
