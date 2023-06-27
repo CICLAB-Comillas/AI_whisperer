@@ -10,7 +10,7 @@ const TranscribeAudio = ({ url }) => {
         setShowTextbox(true);
 
         try {
-            const response = await fetch(audioURL);
+            const response = await fetch(url);
             // Realiza aquí la lógica para acceder y trabajar con el archivo de audio
         } catch (error) {
             console.error('Error al acceder al archivo de audio: ', error);
@@ -27,7 +27,7 @@ const TranscribeAudio = ({ url }) => {
             {showTextbox && (
                 <>
                     <p>Audio received</p>
-                    <textarea rows="6" cols="60" value={url} />}
+                    <textarea rows="6" cols="60" value={url} />
                 </>
             )}
         </div>
