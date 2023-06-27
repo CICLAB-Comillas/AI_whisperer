@@ -6,6 +6,7 @@
     import AudioRecorder from "./comp/AudioRecorder.jsx";
     import Buttons from "./comp/Buttons.jsx";
     import Transcribe from "./comp/Transcribe.jsx"
+    import {Transcriptor} from "./Transcriptor.jsx";
 
     function App() {
         const [audio, setAudio] = useState(null);
@@ -31,6 +32,8 @@
                 <br /> A. Gómez, M. Hervás
                 <br /> M. Liz, A. Quintana
               </h5>
+
+
               <div className="card">
                   {!audio &&
                     <UploadButton onFileUpload={handleFileUpdate}/>
@@ -44,7 +47,7 @@
                    button pressed previously*/}
                   {(audio || file) && <div>
                       {audio && <>
-                          <a>Recording succesful</a>
+                          <a>Recording successful</a>
                           <br/>
                           <a download href={audio}>
                               -- Download Recording --
@@ -59,7 +62,7 @@
                           </a>
                       </>
                       }
-                      <Transcribe />
+                      <Transcribe url={file || audio}/>
                       <a>Options:</a>
                       <Buttons />
                   </div>}
