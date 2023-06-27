@@ -6,7 +6,9 @@ const TranscribeAudio = ({url}) => {
     const [showTextbox, setShowTextbox] = useState(false);
 
     const handleClick = () => {
+        // code goes here for API integration
         setShowTextbox(true);
+
     };
 
     return (
