@@ -1,12 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const TranscribeAudio = ({url}) => {
     const [showTextbox, setShowTextbox] = useState(false);
 
+    function FetchAPI() {
+        axios.get("http://localhost:5000/hello")
+            .then(response => console.log(response.data))
+    }
+
     const handleClick = () => {
         setShowTextbox(true);
+        FetchAPI();
     };
 
     return (
