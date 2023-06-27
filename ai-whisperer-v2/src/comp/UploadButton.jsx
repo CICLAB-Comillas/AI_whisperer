@@ -112,7 +112,7 @@ export const UploadButton = ({ tagText = "UPLOAD A FILE", onFileUpload }) => {
             <input
                 ref={fileInputRef}
                 type="file"
-                accept=".mp3, .mp4, .svg, .wav, .flac, .aac, .m4a, .ogg, .aiff, .aif, .weba"
+                accept=".mp3, .mp4, .m4a, .mpeg, .mpga, .wav, .webm"
                 style={{ display: 'none' }}
                 onChange={handleFileChange}
             />

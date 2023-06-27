@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useRef } from "react";
 const AudioRecorder = ({ onAudioUpdate }) => {
-    const mimeType = "audio/webm";
+    const mimeType = "audio/mp3";
     const [permission, setPermission] = useState(false);
     const mediaRecorder = useRef(null);
     const [recordingStatus, setRecordingStatus] = useState("inactive");
