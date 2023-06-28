@@ -6,7 +6,7 @@ import tempfile
 
 
 
-openai.api_key = app.config.get('OPENAI_API_KEY')
+openai.api_key = os.getenv('OPENAI-API-KEY')
 
 app = Flask(__name__)
 CORS(app)
