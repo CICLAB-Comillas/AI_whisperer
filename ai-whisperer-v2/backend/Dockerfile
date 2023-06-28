@@ -1,0 +1,31 @@
+# Start from the Python 3.9 image
+FROM python:3.9
+
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get install -y \
+    portaudio19-dev \
+    python3-pyaudio
+
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define environment variable
+ENV FLASK_APP=backend.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV OPENAI_API_KEY='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'
+
+# Run backend.py when the container launches
+CMD ["flask", "run"]
+
+
