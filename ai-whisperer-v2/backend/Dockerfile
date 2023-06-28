@@ -23,7 +23,6 @@ EXPOSE 5000
 # Define environment variable
 ENV FLASK_APP=backend.py
 ENV FLASK_RUN_HOST=0.0.0.0
-ENV OPENAI_API_KEY='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'
 
 # Run backend.py when the container launches
 CMD ["flask", "run"]
