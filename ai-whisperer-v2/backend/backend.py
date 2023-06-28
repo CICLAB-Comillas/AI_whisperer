@@ -4,7 +4,9 @@ from flask_cors import CORS
 import os
 import tempfile
 
-openai.api_key = os.getenv('OPENAI-API-KEY')
+
+
+openai.api_key = app.config.get('OPENAI_API_KEY')
 
 app = Flask(__name__)
 CORS(app)
@@ -12,7 +14,6 @@ CORS(app)
 
 
 def api_call(audio_file):
-
 
     response = openai.Audio.transcribe(model="whisper-1", file=audio_file)
 
@@ -23,6 +24,7 @@ def api_call(audio_file):
 
 @app.route('/api/run_script', methods=['POST'])
 def run_script():
+
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
 
