@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const TranscribeAudio = ({url}) => {
+const SummarizeAudio = ({url}) => {
     const [showTextbox, setShowTextbox] = useState(false);
     const [transcription, setTranscription] = useState('');
 
@@ -21,7 +21,7 @@ const TranscribeAudio = ({url}) => {
                 formData.append('file', file);
 
                 // Send the file in a multipart/form-data request
-                return fetch('http://localhost:5000/api/run_script_transcribe', {
+                return fetch('http://localhost:5000/api/run_script_summarize', {
                     method: 'POST',
                     body: formData
                 });
@@ -29,7 +29,7 @@ const TranscribeAudio = ({url}) => {
             .then(response => response.json())
             .then(data => {
                 // Update the transcription state with the response data
-                setTranscription(data.transcript);
+                setTranscription(data.summary);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -38,15 +38,15 @@ const TranscribeAudio = ({url}) => {
 
     return (
         <div>
-            <button onClick={handleClick}>Transcribe</button>
+            <button onClick={handleClick}>Summarize</button>
             <br />
             {showTextbox && <textarea rows="4" cols="50" value={transcription} readOnly/>}
         </div>
     );
 };
 
-TranscribeAudio.propTypes = {
+SummarizeAudio.propTypes = {
     url: PropTypes.string,
 };
 
-export default TranscribeAudio;
+export default SummarizeAudio;
