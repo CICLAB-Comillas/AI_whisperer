@@ -6,7 +6,6 @@
     import AudioRecorder from "./comp/AudioRecorder.jsx";
     import Buttons from "./comp/Buttons.jsx";
     import Transcribe from "./comp/Transcribe.jsx"
-    import {Transcriptor} from "./Transcriptor.jsx";
 
     function App() {
         const [audio, setAudio] = useState(null);
