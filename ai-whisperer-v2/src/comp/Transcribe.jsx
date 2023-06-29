@@ -4,32 +4,43 @@ import PropTypes from 'prop-types';
 
 const TranscribeAudio = ({ url }) => {
     const [showTextbox, setShowTextbox] = useState(false);
+    const [transcription, setTranscription] = useState('');
 
-    const handleClick = async () => {
-        // code goes here for API integration
+    const handleClick = () => {
         setShowTextbox(true);
 
-        try {
-            const response = await fetch(url);
-            // Realiza aquí la lógica para acceder y trabajar con el archivo de audio
-        } catch (error) {
-            console.error('Error al acceder al archivo de audio: ', error);
-        }
+        // Fetch the file from the blob URL
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                // Convert the blob to a File object
+                const file = new File([blob], 'audio.wav', {type: blob.type});
 
+                // Create a FormData object and append the file
+                const formData = new FormData();
+                formData.append('file', file);
 
-
+                // Send the file in a multipart/form-data request
+                return fetch('http://localhost:5000/api/run_script', {
+                    method: 'POST',
+                    body: formData
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the transcription state with the response data
+                setTranscription(data.transcript);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     return (
         <div>
             <button onClick={handleClick}>Transcribe</button>
             <br />
-            {showTextbox && (
-                <>
-                    <p>Audio received</p>
-                    <textarea rows="6" cols="60" value={url} />
-                </>
-            )}
+            {showTextbox && <textarea rows="4" cols="50" value={transcription} readOnly/>}
         </div>
 
     );
@@ -40,4 +51,3 @@ TranscribeAudio.propTypes = {
 };
 
 export default TranscribeAudio;
-

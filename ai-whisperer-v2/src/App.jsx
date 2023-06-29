@@ -1,12 +1,11 @@
-import './App.css'
-import { UploadButton } from "./comp/UploadButton.jsx";
-import { useState } from "react";
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import AudioRecorder from "./comp/AudioRecorder.jsx";
-import Buttons from "./comp/Buttons.jsx";
-import Transcribe from "./comp/Transcribe.jsx"
-// import { Transcriptor } from "./Transcriptor.jsx";
+    import './App.css'
+    import { UploadButton } from "./comp/UploadButton.jsx";
+    import { useState } from "react";
+    // eslint-disable-next-line no-unused-vars
+    import React from "react";
+    import AudioRecorder from "./comp/AudioRecorder.jsx";
+    import Buttons from "./comp/Buttons.jsx";
+    import Transcribe from "./comp/Transcribe.jsx"
 
 function App() {
   const [audio, setAudio] = useState(null);
