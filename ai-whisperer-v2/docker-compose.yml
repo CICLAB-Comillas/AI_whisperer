@@ -4,6 +4,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        - "CACHEBUST=$(date +%s)"
     ports:
       - '5000:5000'
     environment:
@@ -12,5 +14,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        - "CACHEBUST=$(date +%s)"
     ports:
       - '8080:80'

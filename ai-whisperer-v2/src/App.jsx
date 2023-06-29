@@ -4,8 +4,8 @@
     // eslint-disable-next-line no-unused-vars
     import React from "react";
     import AudioRecorder from "./comp/AudioRecorder.jsx";
-    import Buttons from "./comp/Buttons.jsx";
     import Transcribe from "./comp/Transcribe.jsx"
+    import Summarize from "./comp/Summarize.jsx";
 
     function App() {
         const [audio, setAudio] = useState(null);
@@ -63,7 +63,7 @@
                       }
                       <Transcribe url={file || audio}/>
                       <a>Options:</a>
-                      <Buttons />
+                      <Summarize url={file || audio}/>
                   </div>}
 
 
