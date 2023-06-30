@@ -37,7 +37,7 @@ def run_script_transcribe():
     file = request.files['file']
 
     # Create a temporary file to store the uploaded file
-    temp_fd, temp_path = tempfile.mkstemp(suffix='.wav')
+    temp_fd, temp_path = tempfile.mkstemp(suffix='.mp3')
     file.save(temp_path)
 
     # Call your Python script here using the temporary file
@@ -58,7 +58,7 @@ def run_script_summarize():
     file = request.files['file']
 
     # Create a temporary file to store the uploaded file
-    temp_fd, temp_path = tempfile.mkstemp(suffix='.wav')
+    temp_fd, temp_path = tempfile.mkstemp(suffix='.mp3')
     file.save(temp_path)
 
     # Call your Python script here using the temporary file
